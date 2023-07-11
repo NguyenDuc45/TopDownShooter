@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2d80689d2b3794eb8cf0e2cb66fcc0, type: 3}
+  m_Name: Weapon1
+  m_EditorClassIdentifier: 
+  name: Weapon1
+  sprite: {fileID: 2109884040, guid: d1e163e7b6958a54498c77e86f51f01c, type: 3}
+  bullet: {fileID: 4225177245256574934, guid: 5a7bf9bee73edb2448e021a495852657, type: 3}
+  damage: 5
+  fireRate: 1
+  bulletSpeed: 20
+  windUpTime: 0
+  simultaneouslyShot: 2
+  rapidShotTime: 0.1
+  shotsPerBurst: 3
+  spreadAngle: 30
+  knockBack: 1
+  recoil: 1
+  energyCost: 3
