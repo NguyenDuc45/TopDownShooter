@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Booster1
   m_EditorClassIdentifier: 
   name: Basic Booster
-  sprite: {fileID: 2109884040, guid: d1e163e7b6958a54498c77e86f51f01c, type: 3}
-  fb_hitPoints: 0
+  sprite: {fileID: 1329512887, guid: d1e163e7b6958a54498c77e86f51f01c, type: 3}
+  toolTip: Bruh
+  fb_hitPoint: 0
   fb_movementSpeed: 0
   fb_damage: 5
-  fb_fireRate: 2
+  fb_fireRate: 0.2
   fb_bulletSpeed: 0
   fb_windUpTime: 0
   fb_simultaneouslyShot: 0
@@ -30,7 +31,7 @@ MonoBehaviour:
   fb_energyCost: 0
   fb_chargingTime: 0
   fb_chargingSpeed: 0
-  pb_hitPoints: 0
+  pb_hitPoint: 0.01
   pb_movementSpeed: 0
   pb_damage: 0
   pb_fireRate: 1
@@ -42,7 +43,7 @@ MonoBehaviour:
   pb_spreadAngle: 0
   pb_knockBack: 0
   pb_recoil: 0
-  pb_maximumEnergy: 0
+  pb_maximumEnergy: 0.01
   pb_energyCost: 0
   pb_chargingTime: 0
   pb_chargingSpeed: 0

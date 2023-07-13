@@ -13,10 +13,9 @@ public class PlayerMovement : MonoBehaviour
     Vector2 smoothVelocity;
     Vector2 mousePos;
 
+    public float movementSpeed;
     public float angle;
-
-    /*[SerializeField]
-    private float movementSpeed;*/
+    private bool isAddingForce = false;
 
     public Camera cam;
 
@@ -27,13 +26,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        movementSpeed = player._movementSpeed;
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void FixedUpdate()
     {
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref smoothVelocity, 0.1f);
-        rb2d.velocity = smoothedMovementInput * player.movementSpeed;
+        
+        if (!isAddingForce)
+            rb2d.velocity = smoothedMovementInput * movementSpeed;
 
         Vector2 lookDir = mousePos - rb2d.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -44,4 +46,22 @@ public class PlayerMovement : MonoBehaviour
     {
         movementInput = inputValue.Get<Vector2>();
     }
+
+    /*public void AddForceToPlayer(bool isForward, float force, float distance)
+    {
+        isAddingForce = true;
+        var direction = transform.up;
+
+        if (!isForward)
+            direction = direction * -1;
+
+        rb2d.AddForce(transform.up * force, ForceMode2D.Impulse);
+        StartCoroutine(ForceDuration(distance / force));
+    }
+
+    private IEnumerator ForceDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isAddingForce = false;
+    }*/
 }

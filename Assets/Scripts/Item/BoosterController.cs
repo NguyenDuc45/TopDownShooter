@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class BoosterController : MonoBehaviour
 {
-    Player player;
-
     [SerializeField]
     Booster booster;
+    public string boosterName;
+    public string boosterTooltip;
 
-    void AddBonuses(Player player)
+    void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = booster.sprite;
+        boosterName = booster.name;
+        boosterTooltip = booster.toolTip;
+    }
+
+    public void AddBonuses(Player player)
     {
         if (booster.fb_hitPoint != 0)
             player.fb_hitPoint += booster.fb_hitPoint;
@@ -26,6 +33,12 @@ public class BoosterController : MonoBehaviour
         if (booster.fb_bulletSpeed != 0)
             player.fb_bulletSpeed += booster.fb_bulletSpeed;
 
+        if (booster.fb_energyCost != 0)
+            player.fb_energyCost += booster.fb_energyCost;
+
+        if (booster.fb_knockBack != 0)
+            player.fb_knockBack += booster.fb_knockBack;
+
         if (booster.fb_windUpTime != 0)
             player.fb_windUpTime += booster.fb_windUpTime;
 
@@ -41,17 +54,8 @@ public class BoosterController : MonoBehaviour
         if (booster.fb_spreadAngle != 0)
             player.fb_spreadAngle += booster.fb_spreadAngle;
 
-        if (booster.fb_knockBack != 0)
-            player.fb_knockBack += booster.fb_knockBack;
-
-        if (booster.fb_recoil != 0)
-            player.fb_recoil += booster.fb_recoil;
-
         if (booster.fb_maximumEnergy != 0)
             player.fb_maximumEnergy += booster.fb_maximumEnergy;
-
-        if (booster.fb_energyCost != 0)
-            player.fb_energyCost += booster.fb_energyCost;
 
         if (booster.fb_chargingTime != 0)
             player.fb_chargingTime += booster.fb_chargingTime;
@@ -76,6 +80,12 @@ public class BoosterController : MonoBehaviour
         if (booster.pb_bulletSpeed != 0)
             player.pb_bulletSpeed += booster.pb_bulletSpeed;
 
+        if (booster.pb_energyCost != 0)
+            player.pb_energyCost += booster.pb_energyCost;
+
+        if (booster.pb_knockBack != 0)
+            player.pb_knockBack += booster.pb_knockBack;
+
         if (booster.pb_windUpTime != 0)
             player.pb_windUpTime += booster.pb_windUpTime;
 
@@ -91,33 +101,15 @@ public class BoosterController : MonoBehaviour
         if (booster.pb_spreadAngle != 0)
             player.pb_spreadAngle += booster.pb_spreadAngle;
 
-        if (booster.pb_knockBack != 0)
-            player.pb_knockBack += booster.pb_knockBack;
-
-        if (booster.pb_recoil != 0)
-            player.pb_recoil += booster.pb_recoil;
-
         if (booster.pb_maximumEnergy != 0)
             player.pb_maximumEnergy += booster.pb_maximumEnergy;
-
-        if (booster.pb_energyCost != 0)
-            player.pb_energyCost += booster.pb_energyCost;
 
         if (booster.pb_chargingTime != 0)
             player.pb_chargingTime += booster.pb_chargingTime;
 
         if (booster.pb_chargingSpeed != 0)
             player.pb_chargingSpeed += booster.pb_chargingSpeed;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag.Equals("Player"))
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Player>();
-            AddBonuses(player);
-
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

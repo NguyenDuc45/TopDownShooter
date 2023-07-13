@@ -6,6 +6,9 @@ using UnityEngine;
 public class Booster : Item
 {
     #region Stats
+    public string toolTip;
+
+    [Space]
     public float fb_hitPoint;
     public float fb_movementSpeed;
 

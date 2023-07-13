@@ -8,10 +8,18 @@ public class WeaponController : MonoBehaviour
     Player player;
     [SerializeField]
     Weapon weapon;
+    public string weaponName;
+    public string weaponTooltip;
 
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = weapon.sprite;
+    }
+
+    private void Update()
+    {
+        weaponName = weapon.name;
+        weaponTooltip = "Damage: " + weapon.damage + "\n" + "Fire Rate: " + weapon.fireRate + "\n" + "Energy Cost: " + weapon.energyCost;
     }
 
     public void GetWeapon()
@@ -29,7 +37,7 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            //Swap weapon currently held and weapon on the ground
+            //Swap currently held weapon and weapon on the ground
             Weapon tWeapon = ScriptableObject.CreateInstance<Weapon>();
             tWeapon = weapon;
             weapon = player.weapons[player.currentWeaponIndex];

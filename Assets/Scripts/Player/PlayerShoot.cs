@@ -34,21 +34,18 @@ public class PlayerShoot : MonoBehaviour
     public float damage;
     public float fireRate;
     public float bulletSpeed;
+    public float energyCost;
+    public float knockBack;
 
     [Space]
     public float windUpTime;
     public float simultaneouslyShot;
     public float rapidShotTime;
     public float shotsPerBurst;
-    public float spreadAngle;  
-
-    [Space]
-    public float knockBack;
-    public float recoil;
+    public float spreadAngle;
 
     [Space]
     public float maximumEnergy;
-    public float energyCost;   
     public float chargingTime; 
     public float chargingSpeed;
     #endregion
@@ -79,18 +76,20 @@ public class PlayerShoot : MonoBehaviour
     void GetPlayerStats()
     {
         bulletPrefab = player.bullet;
+
         damage = player._damage;
         fireRate = player._fireRate;
         bulletSpeed = player.bulletSpeed;
+        energyCost = player.energyCost;
+        knockBack = player.knockBack;
+
         windUpTime = player.windUpTime;
         simultaneouslyShot = player.simultaneouslyShot;
         rapidShotTime = player.rapidShotTime;
         shotsPerBurst = player.shotsPerBurst;
         spreadAngle = player.spreadAngle;
-        knockBack = player.knockBack;
-        recoil = player.recoil;
+
         maximumEnergy = player.maximumEnergy;
-        energyCost = player.energyCost;
         chargingTime = player.chargingTime;
         chargingSpeed = player.chargingSpeed;
     }

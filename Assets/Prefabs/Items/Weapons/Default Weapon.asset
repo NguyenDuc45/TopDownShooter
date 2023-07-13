@@ -18,11 +18,10 @@ MonoBehaviour:
   damage: 10
   fireRate: 2
   bulletSpeed: 15
+  energyCost: 4
+  knockBack: 1
   windUpTime: 0
   simultaneouslyShot: 1
   rapidShotTime: 0
   shotsPerBurst: 1
   spreadAngle: 5
-  knockBack: 1
-  recoil: 1
-  energyCost: 4
