@@ -3,7 +3,7 @@ guid: d1e163e7b6958a54498c77e86f51f01c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -100,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -108,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 800
+        y: 840
         width: 200
         height: 200
       alignment: 0
@@ -128,8 +141,8 @@ TextureImporter:
       name: ShapeSprite_1
       rect:
         serializedVersion: 2
-        x: 200
-        y: 800
+        x: 210
+        y: 840
         width: 200
         height: 200
       alignment: 0
@@ -149,8 +162,8 @@ TextureImporter:
       name: ShapeSprite_2
       rect:
         serializedVersion: 2
-        x: 400
-        y: 800
+        x: 420
+        y: 840
         width: 200
         height: 200
       alignment: 0
@@ -170,8 +183,8 @@ TextureImporter:
       name: ShapeSprite_3
       rect:
         serializedVersion: 2
-        x: 600
-        y: 800
+        x: 630
+        y: 840
         width: 200
         height: 200
       alignment: 0
@@ -191,8 +204,8 @@ TextureImporter:
       name: ShapeSprite_4
       rect:
         serializedVersion: 2
-        x: 800
-        y: 800
+        x: 840
+        y: 840
         width: 200
         height: 200
       alignment: 0
@@ -213,7 +226,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 600
+        y: 630
         width: 200
         height: 200
       alignment: 0
@@ -233,8 +246,8 @@ TextureImporter:
       name: ShapeSprite_6
       rect:
         serializedVersion: 2
-        x: 200
-        y: 600
+        x: 210
+        y: 630
         width: 200
         height: 200
       alignment: 0
@@ -254,8 +267,8 @@ TextureImporter:
       name: ShapeSprite_7
       rect:
         serializedVersion: 2
-        x: 400
-        y: 600
+        x: 420
+        y: 630
         width: 200
         height: 200
       alignment: 0
@@ -275,8 +288,8 @@ TextureImporter:
       name: ShapeSprite_8
       rect:
         serializedVersion: 2
-        x: 600
-        y: 600
+        x: 630
+        y: 630
         width: 200
         height: 200
       alignment: 0
@@ -296,8 +309,8 @@ TextureImporter:
       name: ShapeSprite_9
       rect:
         serializedVersion: 2
-        x: 800
-        y: 600
+        x: 840
+        y: 630
         width: 200
         height: 200
       alignment: 0
@@ -318,7 +331,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 400
+        y: 420
         width: 200
         height: 200
       alignment: 0
@@ -338,8 +351,8 @@ TextureImporter:
       name: ShapeSprite_11
       rect:
         serializedVersion: 2
-        x: 200
-        y: 400
+        x: 210
+        y: 421
         width: 200
         height: 200
       alignment: 0
@@ -359,8 +372,8 @@ TextureImporter:
       name: ShapeSprite_12
       rect:
         serializedVersion: 2
-        x: 400
-        y: 400
+        x: 420
+        y: 420
         width: 200
         height: 200
       alignment: 0
@@ -380,8 +393,8 @@ TextureImporter:
       name: ShapeSprite_13
       rect:
         serializedVersion: 2
-        x: 600
-        y: 400
+        x: 630
+        y: 420
         width: 200
         height: 200
       alignment: 0
@@ -401,8 +414,8 @@ TextureImporter:
       name: ShapeSprite_14
       rect:
         serializedVersion: 2
-        x: 800
-        y: 400
+        x: 840
+        y: 420
         width: 200
         height: 200
       alignment: 0
@@ -429,21 +442,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShapeSprite_7: 276545991
-      ShapeSprite_10: 1610644352
-      ShapeSprite_13: 1629517715
+      ShapeSprite_0: 144665327
       ShapeSprite_1: -350733746
+      ShapeSprite_10: 1610644352
       ShapeSprite_11: -1723557309
       ShapeSprite_12: -489346531
-      ShapeSprite_9: -1704855167
-      ShapeSprite_5: 2109884040
+      ShapeSprite_13: 1629517715
       ShapeSprite_14: -1044302563
+      ShapeSprite_15: 91139845
+      ShapeSprite_16: 57524046
+      ShapeSprite_17: 2132962083
+      ShapeSprite_18: 840316213
+      ShapeSprite_19: 858893618
       ShapeSprite_2: 1318472112
       ShapeSprite_3: 1750197591
       ShapeSprite_4: -247829747
+      ShapeSprite_5: 2109884040
       ShapeSprite_6: 1329512887
+      ShapeSprite_7: 276545991
       ShapeSprite_8: -752473549
-      ShapeSprite_0: 144665327
+      ShapeSprite_9: -1704855167
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

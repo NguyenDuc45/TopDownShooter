@@ -10,10 +10,10 @@ public class PlayerShoot : MonoBehaviour
 {
     public Player player;
     public PlayerMovement playerMovement;
-    Rigidbody2D playerRb2d;
 
     [SerializeField]
     private GameObject bulletPrefab;
+    private float bulletTravelDistance;
 
     [SerializeField]
     private GameObject firePoint;
@@ -53,8 +53,8 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRb2d = player.GetComponent<Rigidbody2D>();
         player.ApplyStatBonuses();
+        bulletTravelDistance = bulletPrefab.GetComponent<Bullet>().travelDistance;
         currentEnergy = player._maximumEnergy;
     }
 
@@ -131,7 +131,7 @@ public class PlayerShoot : MonoBehaviour
                 bullet.GetComponent<Bullet>().damage = damage;
                 bullet.GetComponent<Bullet>().knockBack = knockBack;
 
-                Destroy(rb2d.gameObject, 30f / bulletSpeed);
+                Destroy(rb2d.gameObject, bulletTravelDistance / bulletSpeed);
 
                 currentEnergy -= energyCost;
 

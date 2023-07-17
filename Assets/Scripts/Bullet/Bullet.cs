@@ -6,4 +6,5 @@ public class Bullet : MonoBehaviour
 {
     public float damage;
     public float knockBack;
+    public float travelDistance = 15f;
 }

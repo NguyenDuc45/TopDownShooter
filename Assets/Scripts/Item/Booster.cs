@@ -6,9 +6,6 @@ using UnityEngine;
 public class Booster : Item
 {
     #region Stats
-    public string toolTip;
-
-    [Space]
     public float fb_hitPoint;
     public float fb_movementSpeed;
 
@@ -16,6 +13,11 @@ public class Booster : Item
     public float fb_damage;
     public float fb_fireRate;
     public float fb_bulletSpeed;
+
+    [Space]
+    public float fb_defense;
+    public float fb_crit;
+    public float fb_critDamage;
 
     [Space]
     public float fb_windUpTime;
@@ -43,6 +45,11 @@ public class Booster : Item
     public float pb_damage;
     public float pb_fireRate;
     public float pb_bulletSpeed;
+
+    [Space]
+    public float pb_defense;
+    public float pb_crit;
+    public float pb_critDamage;
 
     [Space]
     public float pb_windUpTime;

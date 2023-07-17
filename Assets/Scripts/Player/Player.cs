@@ -31,6 +31,11 @@ public class Player : MonoBehaviour
     public float knockBack;
 
     [Space]
+    public float defense;
+    public float crit;                  //Will be calculated into crit chance
+    public float critDamage;
+
+    [Space]
     public float windUpTime;            //Time required to shoot after firing
     public float simultaneouslyShot;    //Number of shots firing simultaneously
     public float rapidShotTime;         //Time between each shot in the salvo
@@ -52,6 +57,10 @@ public class Player : MonoBehaviour
     [NonSerialized] public float _bulletSpeed;
     [NonSerialized] public float _energyCost;
     [NonSerialized] public float _knockBack;
+
+    [NonSerialized] public float _defense;
+    [NonSerialized] public float _crit;
+    [NonSerialized] public float _critDamage;
 
     [NonSerialized] public float _windUpTime;            
     [NonSerialized] public float _simultaneouslyShot;    
@@ -75,6 +84,10 @@ public class Player : MonoBehaviour
     [NonSerialized] public float fb_energyCost;
     [NonSerialized] public float fb_knockBack;
 
+    [NonSerialized] public float fb_defense;
+    [NonSerialized] public float fb_crit;
+    [NonSerialized] public float fb_critDamage;
+
     [NonSerialized] public float fb_windUpTime;
     [NonSerialized] public float fb_simultaneouslyShot;
     [NonSerialized] public float fb_rapidShotTime;
@@ -94,6 +107,10 @@ public class Player : MonoBehaviour
     [NonSerialized] public float pb_bulletSpeed;
     [NonSerialized] public float pb_energyCost;
     [NonSerialized] public float pb_knockBack;
+
+    [NonSerialized] public float pb_defense;
+    [NonSerialized] public float pb_crit;
+    [NonSerialized] public float pb_critDamage;
 
     [NonSerialized] public float pb_windUpTime;
     [NonSerialized] public float pb_simultaneouslyShot;
@@ -208,6 +225,10 @@ public class Player : MonoBehaviour
         _bulletSpeed = CalculateStats(bulletSpeed, _bulletSpeed, fb_bulletSpeed, pb_bulletSpeed, false);
         _energyCost = CalculateStats(energyCost, _energyCost, fb_energyCost, pb_energyCost, true);
         _knockBack = CalculateStats(knockBack, _knockBack, fb_knockBack, pb_knockBack, false);
+
+        _defense = CalculateStats(defense, _defense, fb_defense, pb_defense, false);
+        _crit = CalculateStats(crit, _crit, fb_crit, pb_crit, false);
+        _critDamage = CalculateStats(critDamage, _critDamage, fb_critDamage, pb_critDamage, false);
 
         _windUpTime = CalculateStats(windUpTime, _windUpTime, fb_windUpTime, pb_windUpTime, false);
         _simultaneouslyShot = CalculateStats(simultaneouslyShot, _simultaneouslyShot, fb_simultaneouslyShot, pb_simultaneouslyShot, true);

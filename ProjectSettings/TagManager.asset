@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Weapon
   - Booster
+  - MapTemplate
+  - RoomCenter
+  - BreakableWall
+  - Room
+  - Hallway
+  - HallwaySpawner
+  - RoomSpawner
   layers:
   - Default
   - TransparentFX
