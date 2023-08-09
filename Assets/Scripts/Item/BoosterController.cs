@@ -39,6 +39,21 @@ public class BoosterController : MonoBehaviour
         if (booster.fb_knockBack != 0)
             player.fb_knockBack += booster.fb_knockBack;
 
+        if (booster.fb_stability != 0)
+            player.fb_stability += booster.fb_stability;
+
+        if (booster.fb_defense != 0)
+            player.fb_defense += booster.fb_defense;
+
+        if (booster.fb_damageReduction != 0)
+            player.fb_damageReduction += booster.fb_damageReduction;
+
+        if (booster.fb_crit != 0)
+            player.fb_crit += booster.fb_crit;
+
+        if (booster.fb_critDamage != 0)
+            player.fb_critDamage += booster.fb_critDamage;
+
         if (booster.fb_windUpTime != 0)
             player.fb_windUpTime += booster.fb_windUpTime;
 
@@ -85,6 +100,21 @@ public class BoosterController : MonoBehaviour
 
         if (booster.pb_knockBack != 0)
             player.pb_knockBack += booster.pb_knockBack;
+
+        if (booster.pb_stability != 0)
+            player.pb_stability += booster.pb_stability;
+
+        if (booster.pb_defense != 0)
+            player.pb_defense += booster.pb_defense;
+
+        if (booster.pb_damageReduction != 0)
+            player.pb_damageReduction += booster.pb_damageReduction;
+
+        if (booster.pb_crit != 0)
+            player.pb_crit += booster.pb_crit;
+
+        if (booster.pb_critDamage != 0)
+            player.pb_critDamage += booster.pb_critDamage;
 
         if (booster.pb_windUpTime != 0)
             player.pb_windUpTime += booster.pb_windUpTime;

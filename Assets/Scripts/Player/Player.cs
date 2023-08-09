@@ -29,9 +29,11 @@ public class Player : MonoBehaviour
     public float bulletSpeed;
     public float energyCost;            //Energy required per shot
     public float knockBack;
+    public float stability;             //The stability of a player's damage
 
     [Space]
     public float defense;
+    public float damageReduction;
     public float crit;                  //Will be calculated into crit chance
     public float critDamage;
 
@@ -57,8 +59,11 @@ public class Player : MonoBehaviour
     [NonSerialized] public float _bulletSpeed;
     [NonSerialized] public float _energyCost;
     [NonSerialized] public float _knockBack;
+    [NonSerialized] public float _stability;
 
     [NonSerialized] public float _defense;
+    [NonSerialized] public float _damageReduction;
+    [NonSerialized] public float _finalDamageReduction;
     [NonSerialized] public float _crit;
     [NonSerialized] public float _critDamage;
 
@@ -83,8 +88,10 @@ public class Player : MonoBehaviour
     [NonSerialized] public float fb_bulletSpeed;
     [NonSerialized] public float fb_energyCost;
     [NonSerialized] public float fb_knockBack;
+    [NonSerialized] public float fb_stability;
 
     [NonSerialized] public float fb_defense;
+    [NonSerialized] public float fb_damageReduction;
     [NonSerialized] public float fb_crit;
     [NonSerialized] public float fb_critDamage;
 
@@ -107,8 +114,10 @@ public class Player : MonoBehaviour
     [NonSerialized] public float pb_bulletSpeed;
     [NonSerialized] public float pb_energyCost;
     [NonSerialized] public float pb_knockBack;
+    [NonSerialized] public float pb_stability;
 
     [NonSerialized] public float pb_defense;
+    [NonSerialized] public float pb_damageReduction;
     [NonSerialized] public float pb_crit;
     [NonSerialized] public float pb_critDamage;
 
@@ -225,8 +234,10 @@ public class Player : MonoBehaviour
         _bulletSpeed = CalculateStats(bulletSpeed, _bulletSpeed, fb_bulletSpeed, pb_bulletSpeed, false);
         _energyCost = CalculateStats(energyCost, _energyCost, fb_energyCost, pb_energyCost, true);
         _knockBack = CalculateStats(knockBack, _knockBack, fb_knockBack, pb_knockBack, false);
+        _stability = CalculateStats(stability, _stability, fb_stability, pb_stability, false);
 
         _defense = CalculateStats(defense, _defense, fb_defense, pb_defense, false);
+        _damageReduction = CalculateStats(damageReduction, _damageReduction, fb_damageReduction, pb_damageReduction, false);
         _crit = CalculateStats(crit, _crit, fb_crit, pb_crit, false);
         _critDamage = CalculateStats(critDamage, _critDamage, fb_critDamage, pb_critDamage, false);
 
@@ -239,6 +250,8 @@ public class Player : MonoBehaviour
         _maximumEnergy = CalculateStats(maximumEnergy, _maximumEnergy, fb_maximumEnergy, pb_maximumEnergy, true);
         _chargingTime = CalculateStats(chargingTime, _chargingTime, fb_chargingTime, pb_chargingTime, false);
         _chargingSpeed = CalculateStats(chargingSpeed, _chargingSpeed, fb_chargingSpeed, pb_chargingSpeed, false);
+
+        CalculateFinalDamageReduction();
     }
 
     private float CalculateStats(float bStat, float stat, float fbStat, float pbStat, bool isNeedToRound)
@@ -255,6 +268,12 @@ public class Player : MonoBehaviour
         else stat = (float)Math.Round(stat, 2);
 
         return stat;
+    }
+
+    private void CalculateFinalDamageReduction()
+    {
+        float drFromDefense = (5000 / 3) / (5000 / 3 + _defense);
+        _finalDamageReduction = _damageReduction + drFromDefense;
     }
 
     public void ApplyWeapon(Weapon weapon)
@@ -274,6 +293,8 @@ public class Player : MonoBehaviour
         energyCost = weapon.energyCost;
 
         knockBack = weapon.knockBack;
+
+        stability = weapon.stability;
 
         windUpTime = weapon.windUpTime;
 

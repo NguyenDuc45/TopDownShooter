@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class Enemy : ScriptableObject
 {
     public new string name;
@@ -15,4 +16,7 @@ public class Enemy : ScriptableObject
     public float bulletSpeed;
 
     public float defense;
+
+    public float patrolDistance;
+    public float patrolCooldown;
 }

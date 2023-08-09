@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Weapon2
   m_EditorClassIdentifier: 
   name: Weapon2
-  sprite: {fileID: -1704855167, guid: d1e163e7b6958a54498c77e86f51f01c, type: 3}
+  sprite: {fileID: 21300000, guid: e6e3f27143849224abe38f890f6ac983, type: 3}
+  toolTip: 
   bullet: {fileID: 4225177245256574934, guid: 5a7bf9bee73edb2448e021a495852657, type: 3}
-  damage: 2
+  damage: 30
   fireRate: 10
   bulletSpeed: 30
+  energyCost: 2
+  knockBack: 1
+  bulletTravelDistance: 7
+  stability: 2000
   windUpTime: 0
   simultaneouslyShot: 1
   rapidShotTime: 0
   shotsPerBurst: 1
   spreadAngle: 1
-  knockBack: 1
-  recoil: 1
-  energyCost: 2

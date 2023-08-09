@@ -13,9 +13,13 @@ public class Booster : Item
     public float fb_damage;
     public float fb_fireRate;
     public float fb_bulletSpeed;
+    public float fb_energyCost;
+    public float fb_knockBack;
+    public float fb_stability;
 
     [Space]
     public float fb_defense;
+    public float fb_damageReduction;
     public float fb_crit;
     public float fb_critDamage;
 
@@ -27,12 +31,7 @@ public class Booster : Item
     public float fb_spreadAngle;
 
     [Space]
-    public float fb_knockBack;
-    public float fb_recoil;
-
-    [Space]
     public float fb_maximumEnergy;
-    public float fb_energyCost;
     public float fb_chargingTime;
     public float fb_chargingSpeed;
 
@@ -45,9 +44,13 @@ public class Booster : Item
     public float pb_damage;
     public float pb_fireRate;
     public float pb_bulletSpeed;
+    public float pb_energyCost;
+    public float pb_knockBack;
+    public float pb_stability;
 
     [Space]
     public float pb_defense;
+    public float pb_damageReduction;
     public float pb_crit;
     public float pb_critDamage;
 
@@ -59,12 +62,7 @@ public class Booster : Item
     public float pb_spreadAngle;
 
     [Space]
-    public float pb_knockBack;
-    public float pb_recoil;
-
-    [Space]
     public float pb_maximumEnergy;
-    public float pb_energyCost;
     public float pb_chargingTime;
     public float pb_chargingSpeed;
     #endregion

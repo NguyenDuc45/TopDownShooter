@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Default Weapon
   m_EditorClassIdentifier: 
   name: Default Weapon
-  sprite: {fileID: 276545991, guid: d1e163e7b6958a54498c77e86f51f01c, type: 3}
+  sprite: {fileID: 21300000, guid: e5613318585327b4eb50ea463cc36ab5, type: 3}
+  toolTip: 
   bullet: {fileID: 4225177245256574934, guid: 5a7bf9bee73edb2448e021a495852657, type: 3}
-  damage: 10
+  damage: 100
   fireRate: 2
   bulletSpeed: 15
   energyCost: 4
   knockBack: 1
+  bulletTravelDistance: 30
+  stability: 2000
   windUpTime: 0
   simultaneouslyShot: 1
   rapidShotTime: 0

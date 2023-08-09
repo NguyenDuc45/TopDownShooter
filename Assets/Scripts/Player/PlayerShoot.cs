@@ -36,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
     public float bulletSpeed;
     public float energyCost;
     public float knockBack;
+    public float stability;
 
     [Space]
     public float windUpTime;
@@ -54,7 +55,6 @@ public class PlayerShoot : MonoBehaviour
     void Start()
     {
         player.ApplyStatBonuses();
-        bulletTravelDistance = bulletPrefab.GetComponent<Bullet>().travelDistance;
         currentEnergy = player._maximumEnergy;
     }
 
@@ -71,6 +71,8 @@ public class PlayerShoot : MonoBehaviour
 
         if (currentShootingCooldown > 0)
             currentShootingCooldown -= Time.deltaTime;
+
+        bulletTravelDistance = player.weapons[player.currentWeaponIndex].bulletTravelDistance;
     }
 
     void GetPlayerStats()
@@ -79,19 +81,20 @@ public class PlayerShoot : MonoBehaviour
 
         damage = player._damage;
         fireRate = player._fireRate;
-        bulletSpeed = player.bulletSpeed;
-        energyCost = player.energyCost;
-        knockBack = player.knockBack;
+        bulletSpeed = player._bulletSpeed;
+        energyCost = player._energyCost;
+        knockBack = player._knockBack;
+        stability = player._stability;
 
-        windUpTime = player.windUpTime;
-        simultaneouslyShot = player.simultaneouslyShot;
-        rapidShotTime = player.rapidShotTime;
-        shotsPerBurst = player.shotsPerBurst;
-        spreadAngle = player.spreadAngle;
+        windUpTime = player._windUpTime;
+        simultaneouslyShot = player._simultaneouslyShot;
+        rapidShotTime = player._rapidShotTime;
+        shotsPerBurst = player._shotsPerBurst;
+        spreadAngle = player._spreadAngle;
 
-        maximumEnergy = player.maximumEnergy;
-        chargingTime = player.chargingTime;
-        chargingSpeed = player.chargingSpeed;
+        maximumEnergy = player._maximumEnergy;
+        chargingTime = player._chargingTime;
+        chargingSpeed = player._chargingSpeed;
     }
 
     private void OnFire(InputValue inputValue)
@@ -128,7 +131,9 @@ public class PlayerShoot : MonoBehaviour
                 Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
                 rb2d.velocity = bulletSpeed * bullet.transform.up;
 
-                bullet.GetComponent<Bullet>().damage = damage;
+                float damageFloor = (stability / (stability + 1000)) + 0.2f;
+                float finalDamage = Random.Range(damage * damageFloor, damage);
+                bullet.GetComponent<Bullet>().damage = (int)finalDamage;
                 bullet.GetComponent<Bullet>().knockBack = knockBack;
 
                 Destroy(rb2d.gameObject, bulletTravelDistance / bulletSpeed);

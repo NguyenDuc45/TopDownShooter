@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WeaponUI : MonoBehaviour
 {
     public GameObject weaponPlaceholder;
-    public GameObject changeWeaponIcon;
+    public TextMeshProUGUI energyCostDisplay;
 
     Player player;
 
     private void Awake()
     {
         weaponPlaceholder = transform.Find("Weapon Placeholder").gameObject;
-        changeWeaponIcon = transform.Find("Change Weapon Icon").gameObject;
-
+        energyCostDisplay = transform.Find("Energy Cost Display/Text").GetComponent<TextMeshProUGUI>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
@@ -27,8 +27,7 @@ public class WeaponUI : MonoBehaviour
     {
         weaponPlaceholder.GetComponent<Image>().sprite = player.weapons[player.currentWeaponIndex].sprite;
 
-        if (player.weapons.Count >= 2)
-            changeWeaponIcon.SetActive(true);
-        else changeWeaponIcon.SetActive(false);
+        float energyCost = player._energyCost;
+        energyCostDisplay.text = energyCost.ToString();
     }
 }

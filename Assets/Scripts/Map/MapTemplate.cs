@@ -7,6 +7,11 @@ public class MapTemplate : MonoBehaviour
     public int currentMultRoomCount = 1;
     public int maxMultRoomCount = 7;
     public float generatingSpeed = 0.1f;
+    public float timeBeforeSpawningBoss = 4f;
+    private bool isSpawnedBoss = false;
+    private bool isSpawnedWeapon = false;
+    public GameObject boss;
+    WeaponPool weaponPool;
 
     [Space]
     public List<GameObject> rooms;
@@ -43,6 +48,35 @@ public class MapTemplate : MonoBehaviour
     void Start()
     {
         rooms.Add(initialRoom);
+        weaponPool = GameObject.FindGameObjectWithTag("WeaponPool").GetComponent<WeaponPool>();
+    }
+
+    void Update()
+    {
+        SpawnBossAndItem();
+    }
+
+    private void SpawnBossAndItem()
+    {
+        if (timeBeforeSpawningBoss <= 0f)
+        {
+            if (!isSpawnedBoss)
+            {
+                GameObject lastRoom = rooms[rooms.Count - 1];
+                //Instantiate(boss, lastRoom.transform.position, Quaternion.identity);
+                isSpawnedBoss = true;
+            }
+
+            if (!isSpawnedWeapon)
+            {
+                int randWeapon = Random.Range(0, weaponPool.pool1.Length);
+                GameObject randRoom = rooms[Random.Range(1, rooms.Count)];
+                Instantiate(weaponPool.pool1[randWeapon], randRoom.transform.position, Quaternion.identity);
+                isSpawnedWeapon = true;
+            }
+
+        }
+        else timeBeforeSpawningBoss -= Time.deltaTime;
     }
 }
 

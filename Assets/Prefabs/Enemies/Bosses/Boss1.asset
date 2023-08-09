@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f7c3ae9c8ac51489c0a35365bbf566, type: 3}
+  m_Name: Boss1
+  m_EditorClassIdentifier: 
+  name: Enemy 1
+  sprite: {fileID: -2031880218, guid: 2a6db5838a062664fb671b74374ee583, type: 3}
+  hitPoint: 2000
+  movementSpeed: 7
+  damage: 10
+  fireRate: 0
+  bulletSpeed: 0
+  defense: 0
+  patrolDistance: 2
+  patrolCooldown: 3
