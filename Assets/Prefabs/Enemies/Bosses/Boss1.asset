@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Enemy 1
   sprite: {fileID: -2031880218, guid: 2a6db5838a062664fb671b74374ee583, type: 3}
-  hitPoint: 2000
+  hitPoint: 10000
   movementSpeed: 7
   damage: 10
   fireRate: 0

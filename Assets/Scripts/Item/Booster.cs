@@ -7,6 +7,7 @@ public class Booster : Item
 {
     #region Stats
     public float fb_hitPoint;
+    public float fb_invulnerabilityTime;
     public float fb_movementSpeed;
 
     [Space]
@@ -38,6 +39,7 @@ public class Booster : Item
     [Space]
     [Space]
     public float pb_hitPoint;
+    public float pb_invulnerabilityTime;
     public float pb_movementSpeed;
 
     [Space]

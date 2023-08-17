@@ -21,6 +21,9 @@ public class BoosterController : MonoBehaviour
         if (booster.fb_hitPoint != 0)
             player.fb_hitPoint += booster.fb_hitPoint;
 
+        if (booster.fb_invulnerabilityTime != 0)
+            player.fb_invulnerabilityTime += booster.fb_invulnerabilityTime;
+
         if (booster.fb_movementSpeed != 0)
             player.fb_movementSpeed += booster.fb_movementSpeed;
 
@@ -82,6 +85,9 @@ public class BoosterController : MonoBehaviour
 
         if (booster.pb_hitPoint != 0)
             player.pb_hitPoint += booster.pb_hitPoint;
+
+        if (booster.pb_invulnerabilityTime != 0)
+            player.pb_invulnerabilityTime += booster.pb_invulnerabilityTime;
 
         if (booster.pb_movementSpeed != 0)
             player.pb_movementSpeed += booster.pb_movementSpeed;

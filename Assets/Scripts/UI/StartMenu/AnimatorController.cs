@@ -84,6 +84,19 @@ public class AnimatorController : MonoBehaviour
         controlsGroupAnimator.SetBool("getIn", false);
     }
 
+    public void ControlsGroupAnimSlowGetIn()
+    {
+        controlsGroupAnimator.SetBool("stayOut", false);
+        controlsGroupAnimator.SetBool("getIn", true);
+        controlsGroupAnimator.SetBool("slowMoving", false);
+    }
+
+    public void ControlsGroupAnimSlowGetOut()
+    {
+        controlsGroupAnimator.SetBool("getIn", false);
+        controlsGroupAnimator.SetBool("slowMoving", true);
+    }
+
     public void SoundsGroupAnimGetIn()
     {
         soundsGroupAnimator.SetBool("stayOut", false);
@@ -93,5 +106,18 @@ public class AnimatorController : MonoBehaviour
     public void SoundsGroupAnimGetOut()
     {
         soundsGroupAnimator.SetBool("getIn", false);
+    }
+
+    public void SoundsGroupAnimSlowGetIn()
+    {
+        soundsGroupAnimator.SetBool("stayOut", false);
+        soundsGroupAnimator.SetBool("getIn", true);
+        soundsGroupAnimator.SetBool("slowMoving", false);
+    }
+
+    public void SoundsGroupAnimSlowGetOut()
+    {
+        soundsGroupAnimator.SetBool("getIn", false);
+        soundsGroupAnimator.SetBool("slowMoving", true);
     }
 }

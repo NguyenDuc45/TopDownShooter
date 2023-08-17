@@ -18,6 +18,7 @@ public class Weapon : Item
     public float knockBack;
     public float bulletTravelDistance;
     public float stability;             //The stability of a player's damage
+    public float piercingCount;
 
     [Space]
     public float windUpTime;            //Time required to shoot after firing

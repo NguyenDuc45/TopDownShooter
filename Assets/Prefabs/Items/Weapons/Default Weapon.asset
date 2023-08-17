@@ -21,8 +21,9 @@ MonoBehaviour:
   bulletSpeed: 15
   energyCost: 4
   knockBack: 1
-  bulletTravelDistance: 30
+  bulletTravelDistance: 15
   stability: 2000
+  piercingCount: 0
   windUpTime: 0
   simultaneouslyShot: 1
   rapidShotTime: 0

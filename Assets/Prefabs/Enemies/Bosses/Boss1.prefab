@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8099179875591004963}
   - component: {fileID: 4765108138304088481}
   - component: {fileID: 3087700385587568003}
+  - component: {fileID: 7417577601246820708}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Enemy
@@ -177,3 +178,15 @@ MonoBehaviour:
   randomSpot: {x: 0, y: 0, z: 0}
   roomCenter: {x: 0, y: 0, z: 0}
   rotationSpeed: 1000
+--- !u!114 &7417577601246820708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728167045343031715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff7026dbf5fa0941923f2fff09f6392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

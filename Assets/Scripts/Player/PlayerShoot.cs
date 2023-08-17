@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -135,8 +136,10 @@ public class PlayerShoot : MonoBehaviour
                 float finalDamage = Random.Range(damage * damageFloor, damage);
                 bullet.GetComponent<Bullet>().damage = (int)finalDamage;
                 bullet.GetComponent<Bullet>().knockBack = knockBack;
+                bullet.GetComponent<Bullet>().piercingCount = player.weapons[player.currentWeaponIndex].piercingCount;
 
-                Destroy(rb2d.gameObject, bulletTravelDistance / bulletSpeed);
+                //Destroy(bullet, bulletTravelDistance / bulletSpeed);
+                StartCoroutine(DestroyBullet(bullet, bulletTravelDistance / bulletSpeed));
 
                 currentEnergy -= energyCost;
 
@@ -147,6 +150,14 @@ public class PlayerShoot : MonoBehaviour
         }
              
         isWindingUp = false;
+    }
+
+    IEnumerator DestroyBullet(GameObject bullet, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (bullet != null)
+            bullet.GetComponent<Bullet>().DestroyBullet();
     }
 
     private void RechargeEnergy()

@@ -8,9 +8,12 @@ public class MapTemplate : MonoBehaviour
     public int maxMultRoomCount = 7;
     public float generatingSpeed = 0.1f;
     public float timeBeforeSpawningBoss = 4f;
+
     private bool isSpawnedBoss = false;
     private bool isSpawnedWeapon = false;
+
     public GameObject boss;
+    public GameObject portal;
     WeaponPool weaponPool;
 
     [Space]
@@ -63,7 +66,9 @@ public class MapTemplate : MonoBehaviour
             if (!isSpawnedBoss)
             {
                 GameObject lastRoom = rooms[rooms.Count - 1];
+                lastRoom.GetComponent<RoomController>().isBossRoom = true;
                 //Instantiate(boss, lastRoom.transform.position, Quaternion.identity);
+                //Debug.Log(lastRoom.transform.position);
                 isSpawnedBoss = true;
             }
 

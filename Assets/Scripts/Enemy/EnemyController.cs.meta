@@ -3,7 +3,10 @@ guid: dbc4f73f9ce433a49a1cc5f17334b8f1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemy: {instanceID: 0}
+  - damagePopup: {fileID: 7620830666280531527, guid: f6777129341b1b44ea72d26cbaff7bd4, type: 3}
+  - onDestroyFX: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     public float hitPoint;
     private float tempHitPoint;
     public float currentHitPoint;
+    public float invulnerabilityTime;
+    public float currentInvulnerabilityCooldown;
     public float movementSpeed;
 
     [SerializeField]
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
 
     #region FinalStats
     [NonSerialized] public float _hitPoint;
+    [NonSerialized] public float _invulnerabilityTime;
     [NonSerialized] public float _movementSpeed;
 
     [NonSerialized] public float _damage;
@@ -81,6 +85,7 @@ public class Player : MonoBehaviour
     #region StatBonuses
     //fb: Flat Bonus
     [NonSerialized] public float fb_hitPoint;
+    [NonSerialized] public float fb_invulnerabilityTime;
     [NonSerialized] public float fb_movementSpeed;
 
     [NonSerialized] public float fb_damage;
@@ -107,6 +112,7 @@ public class Player : MonoBehaviour
 
     //pb: Percentage Bonus
     [NonSerialized] public float pb_hitPoint;
+    [NonSerialized] public float pb_invulnerabilityTime;
     [NonSerialized] public float pb_movementSpeed;
 
     [NonSerialized] public float pb_damage;
@@ -145,6 +151,11 @@ public class Player : MonoBehaviour
     [Space]
     public bool isCollidingWithWeapon = false;
     public bool isCollidingWithBooster = false;
+    public bool isCollidingWithPortal = false;
+
+    [Space]
+    public GameObject gameManager;
+    public GameObject transition;
 
     private void Awake()
     {
@@ -169,6 +180,7 @@ public class Player : MonoBehaviour
     {
         ApplyStatBonuses();
         HPAndEnergyScaling();
+        InvulnerabilityController();
     }
 
     private void OnInteract(InputValue inputValue)
@@ -178,6 +190,9 @@ public class Player : MonoBehaviour
 
         else if (isCollidingWithBooster)
             boosterController.AddBonuses(this);
+
+        else if (isCollidingWithPortal)
+            GoToTheNextStage();
     }
 
     private void OnChangeWeapon(InputValue inputValue)
@@ -211,6 +226,11 @@ public class Player : MonoBehaviour
             isCollidingWithBooster = true;
             boosterController = collision.GetComponent<BoosterController>();
         }
+
+        if (collision.tag.Equals("Portal"))
+        {
+            isCollidingWithPortal = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -219,14 +239,16 @@ public class Player : MonoBehaviour
             isCollidingWithWeapon = false;
 
         if (collision.tag.Equals("Booster"))
-        {
             isCollidingWithBooster = false;
-        }
+
+        if (collision.tag.Equals("Portal"))
+            isCollidingWithPortal = false;
     }
 
     public void ApplyStatBonuses()
     {
         _hitPoint = CalculateStats(hitPoint, _hitPoint, fb_hitPoint, pb_hitPoint, true);
+        _invulnerabilityTime = CalculateStats(invulnerabilityTime, _invulnerabilityTime, fb_invulnerabilityTime, pb_invulnerabilityTime, false);
         _movementSpeed = CalculateStats(movementSpeed, _movementSpeed, fb_movementSpeed, pb_movementSpeed, false);
 
         _damage = CalculateStats(damage, _damage, fb_damage, pb_damage, false);
@@ -336,5 +358,41 @@ public class Player : MonoBehaviour
 
         if (playerShoot.currentEnergy > _maximumEnergy)
             playerShoot.currentEnergy = _maximumEnergy;
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        if (currentInvulnerabilityCooldown <= 0)
+        {
+            currentInvulnerabilityCooldown = _invulnerabilityTime;
+            currentHitPoint -= damageTaken;
+        }
+
+        if (currentHitPoint <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        gameManager.GetComponent<GameManager>().ShowGameOverMenu();
+        gameObject.SetActive(false);
+    }
+
+    private void InvulnerabilityController()
+    {
+        if (currentInvulnerabilityCooldown > 0)
+            currentInvulnerabilityCooldown -= Time.deltaTime;
+    }
+
+    private void GoToTheNextStage()
+    {
+        transition.GetComponent<Animator>().SetBool("getIn", true);
+        StartCoroutine(LoadScene());
+    }
+
+    IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(1);
     }
 }

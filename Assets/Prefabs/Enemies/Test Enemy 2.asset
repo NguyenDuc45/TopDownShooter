@@ -15,8 +15,10 @@ MonoBehaviour:
   name: Enemy 1
   sprite: {fileID: -2031880218, guid: 2a6db5838a062664fb671b74374ee583, type: 3}
   hitPoint: 1000
-  movementSpeed: 15
+  movementSpeed: 8
   damage: 10
   fireRate: 0
   bulletSpeed: 0
   defense: 0
+  patrolDistance: 0
+  patrolCooldown: 0

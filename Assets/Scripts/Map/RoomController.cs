@@ -6,10 +6,13 @@ public class RoomController : MonoBehaviour
 {
     GameObject doors;
     GameObject[] pool;
+    GameObject portal;
     EnemyPool enemyPool;
+    MapTemplate mapTemplate;
     Transform player;
 
     bool isSpawned = false;
+    public bool isBossRoom = false;
     float enemyCount;
     float distanceToPlayer;
 
@@ -24,6 +27,7 @@ public class RoomController : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         enemyPool = GameObject.FindWithTag("EnemyPool").GetComponent<EnemyPool>();
+        mapTemplate = GameObject.FindWithTag("MapTemplate").GetComponent<MapTemplate>();
         doors = transform.Find("Grid/Doors").gameObject;
     }
 
@@ -56,7 +60,11 @@ public class RoomController : MonoBehaviour
             doors.SetActive(true);
 
         if (isSpawned == true && enemyCount == 0)
+        {
+            if (portal != null)
+                portal.SetActive(true);
             doors.SetActive(false);
+        }
     }
 
     private void GetEnemyPool()
@@ -90,6 +98,15 @@ public class RoomController : MonoBehaviour
 
                 GameObject newEnemy = Instantiate(pool[rand], transform.position + spawnOffset, Quaternion.identity);
                 newEnemy.GetComponent<EnemyMovement>().roomCenter = transform.position;
+            }
+
+            if (isBossRoom)
+            {
+                GameObject boss = Instantiate(mapTemplate.boss, transform.position, Quaternion.identity);
+                boss.GetComponent<EnemyMovement>().roomCenter = transform.position;
+
+                portal = Instantiate(mapTemplate.portal, transform.position, Quaternion.identity);
+                portal.SetActive(false);
             }
 
             isSpawned = true;

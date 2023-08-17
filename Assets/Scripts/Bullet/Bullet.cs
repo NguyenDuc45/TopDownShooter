@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float damage;
     public DamageType damageType;
     public float knockBack;
+    public float piercingCount;
 
     public GameObject onDestroyFX;
 
@@ -14,16 +15,27 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Wall") || collision.CompareTag("BreakableWall"))
         {
-            Destroy(gameObject);
+            DestroyBullet();
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyController enemy = collision.GetComponent<EnemyController>();
+            enemy.TakeDamage(damage, damageType);
+
+            if (piercingCount > 0)
+                piercingCount--;
+            else DestroyBullet();
         }
     }
 
-    private void OnDestroy()
+    public void DestroyBullet()
     {
         GameObject effect = Instantiate(onDestroyFX, transform.position, Quaternion.identity);
         ParticleSystem.MainModule mainModule = effect.GetComponent<ParticleSystem>().main;
         mainModule.startColor = GetComponent<SpriteRenderer>().color;
         Destroy(effect, 3f);
+        Destroy(gameObject);
     }
 }
 

@@ -32,8 +32,8 @@ public class StartMenu : MonoBehaviour
         animatorController.SettingsGroupAnimGetIn();
 
         if (isAtControlsOption)
-            animatorController.ControlsGroupAnimGetIn();
-        else animatorController.SoundsGroupAnimGetIn();
+            animatorController.ControlsGroupAnimSlowGetIn();
+        else animatorController.SoundsGroupAnimSlowGetIn();
     }
 
     public void Controls()
@@ -64,8 +64,8 @@ public class StartMenu : MonoBehaviour
         animatorController.SettingsGroupAnimGetOut();
 
         if (isAtControlsOption)
-            animatorController.ControlsGroupAnimGetOut();
-        else animatorController.SoundsGroupAnimGetOut();
+            animatorController.ControlsGroupAnimSlowGetOut();
+        else animatorController.SoundsGroupAnimSlowGetOut();
 
         animatorController.MainGroupAnimGetIn();
     }

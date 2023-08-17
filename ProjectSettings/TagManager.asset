@@ -18,6 +18,7 @@ TagManager:
   - EnemyPool
   - Wall
   - WeaponPool
+  - Portal
   layers:
   - Default
   - TransparentFX
